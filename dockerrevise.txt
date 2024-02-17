@@ -1,0 +1,125 @@
+To make a container from image
+->docker run image
+
+To make container from image and run in interative mode(-it)
+->docker run -it image
+->the terminal of the container will we opened after building the container
+
+Port mapping
+->docker run -p computerport:dockerport image
+->to map computer port with docker port.The incomming request at the computerport will redirect to docker container port
+
+Background running
+->docker run -d image
+->to run builded container in background
+
+passing env in docker
+->docker run -e key=value image
+
+to start container
+->docker start container_id
+
+to stop container
+->docker stop container_id
+
+to remove container
+->docker rm container_id
+->to remove docker it should be removed first of all
+
+execute command in container
+->docker exec -it container_id bash
+->to start a terminal in docker container
+
+
+to see all the running container
+->docker ps
+
+to see all the container running as well as not running
+->docker ps -a
+
+
+->to build a docker file
+Make a docker file Dockerfile
+
+Some of the command
+FROM IMAGE           ->make container of this image
+RUN CONMMAND         ->run command on this command
+COPY SOURCE DESTINATION ->conpy file to container
+ENTRYPOINT []  ->run command automatically after container is started
+WORKDIR DIRECTRY  ->Switch to directry in container all the work will be in this directry
+
+COPY . .      ->copy all the file of location . to the container . except the file and folder of .dockerignore
+
+MAKE file .dockerignore
+->inside that file
+nodemodules/
+
+
+Building the docker file
+docker build -t IMAGENAME DOCKERFILELOCATION
+
+->docker file and composer file should be in root directry of my projects for example in django in manage.py directry
+
+PUBLISHING THE DOCKER IMAGE IN DOCKER
+->make docker image of name username/imagename
+->docker login
+->docker push username/imagename
+
+
+
+
+
+DOCKER COMPOSER
+->to run muntiple image in same cotainer 
+make docker-compose.yml
+inside this file name
+version:'3.8'
+
+services:
+      postgres:
+          image:postgres
+          ports:
+             -"5432:5432"
+          environment:
+              POSTGRESISER=postgress
+              postgres_db=review
+              postgres_password=password
+       reddis:
+           image:redis
+           ports:
+             ="80:80"
+
+to make this container we use
+=>sudo docker compose up
+
+to remove all the image from container
+=>sudo docker compose down
+
+to run it in background
+=>sudo docker -d compose up
+
+
+
+
+
+VOLUMES IN CONTAINER  =>s
+=>docker run -it -v HOST_MACINE_FOLERNAME:CONTAINER_FOLDERNAME IMAGENAME
+eg:docker run -it -v /home/nirajan/Downloads/backup:/home/app ubuntu
+
+=>all the files and folders of /app will be in /backup and all the files and folders of /backup will be in /app
+=>use cases:
+1)to take backup . even the container is deleted files amd folders of /app will be in /backup
+2)to delete container only not its data
+3)to make a new container with same data
+
+
+
+
+
+
+
+
+
+
+ 
+
