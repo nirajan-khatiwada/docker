@@ -46,6 +46,8 @@ FROM IMAGE           ->make container of this image
 RUN CONMMAND         ->run command on this command
 COPY SOURCE DESTINATION ->conpy file to container
 ENTRYPOINT []  ->run command automatically after container is started
+CMD [] =>run command 
+EXPOSE port =>to expose file
 WORKDIR DIRECTRY  ->Switch to directry in container all the work will be in this directry
 
 COPY . .      ->copy all the file of location . to the container . except the file and folder of .dockerignore
@@ -73,8 +75,12 @@ DOCKER COMPOSER
 ->to run muntiple image in same cotainer 
 make docker-compose.yml
 inside this file name
-version:'3.8'
 
+->to use dockercompose with our file:
+
+
+
+version:'3.8'
 services:
       postgres:
           image:postgres
@@ -88,6 +94,66 @@ services:
            image:redis
            ports:
              ="80:80"
+
+
+using docker-compose in realworld 
+version: '3'
+services:
+  pythonapp:
+    image: your-python-image:tag
+    ports:
+      - "8000:8000"
+    volumes:
+      - /Users/data:/src/bin/data
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
+  redis:
+    image: redis
+    volumes:
+      - /path/to/local/directory:/data
+
+
+or:
+
+version: '3'
+
+services:
+  pythonapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - /Users/desktop:/src/bin/desktop
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
+  redis:
+    image: redis
+    volumes:
+      - /path/to/local/directory:/data
+
+
+
+
 
 to make this container we use
 =>sudo docker compose up
