@@ -41,7 +41,7 @@ to see all the container running as well as not running
 ->to build a docker file
 Make a docker file Dockerfile
 
-Some of the command
+Some of the command(Watch fireship video)
 FROM IMAGE           ->make container of this image
 RUN CONMMAND         ->run command on this command
 COPY SOURCE DESTINATION ->conpy file to container
