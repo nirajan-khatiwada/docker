@@ -208,30 +208,40 @@ services:
       - /path/to/local/directory:/data
 
 or 
+version: '3.8'
 
-sing docker-compose in realworld 
-version: '3'
 services:
-  pythonapp:
-    container_name:"mero_python"
-    image: your-python-image:tag
+  django-app:
+    container_name: django-app
+    image: django-app:latest  # Replace with your actual Django image name/tag
     ports:
-      - "8000:8000"
-    volumes:
-      - /Users/data:/src/bin/data
+      - "8000:8000"  # Expose Django app on port 8000
+    environment:
+      - DEBUG=1  # Set Django debug mode to 1 for development
+      - DATABASE_URL=postgres://nirajan:nirajan@9845@postgres:5432/nirajan  # PostgreSQL database URL
+      - REDIS_URL=redis://redis:6379/0  # Redis URL
     depends_on:
-      - db
-    environment:
-          postgrace_host:meropostgrace
+      - postgres
+      - redis
+    volumes:
+      - static_volume:/code/static  # Volume for Django static files
+      - media_volume:/code/media  # Volume for Django media files
 
-  db:
-    container_name:meropostgrace
-    image: postgres
+  postgres:
+    container_name: postgres
+    image: postgres:latest
     environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: nirajan  # Database name
+      POSTGRES_USER: nirajan  # Database username
+      POSTGRES_PASSWORD: nirajan@9845  # Database password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6379:6379" 
 
 
 
