@@ -207,6 +207,33 @@ services:
     volumes:
       - /path/to/local/directory:/data
 
+or 
+
+sing docker-compose in realworld 
+version: '3'
+services:
+  pythonapp:
+    container_name:"mero_python"
+    image: your-python-image:tag
+    ports:
+      - "8000:8000"
+    volumes:
+      - /Users/data:/src/bin/data
+    depends_on:
+      - db
+    environment:
+          postgrace_host:meropostgrace
+
+  db:
+    container_name:meropostgrace
+    image: postgres
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
+
+
 
 
 
