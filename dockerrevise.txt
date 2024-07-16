@@ -210,7 +210,6 @@ services:
 
 
 
-
 to make this container we use
 =>sudo docker compose up
 
@@ -233,19 +232,4 @@ eg:docker run -it -v /home/nirajan/Downloads/backup:/home/app ubuntu
 1)to take backup . even the container is deleted files amd folders of /app will be in /backup
 2)to delete container only not its data
 3)to make a new container with same data
-
-
-Docker Network
-see video of:https://www.youtube.com/watch?v=xPT8mXa-sJg&t=341s
-
-
-
-
-
-
-
-
-
-
- 
 
