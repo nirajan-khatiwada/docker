@@ -39,8 +39,17 @@ to see all the container running as well as not running
 
 
 ->to build a docker file
-Make a docker file Dockerfile
 
+
+
+
+
+
+
+
+
+
+Make a docker file Dockerfile
 Some of the command(Watch fireship video)
 FROM IMAGE           ->make container of this image
 RUN CONMMAND         ->run command on this command
@@ -49,18 +58,56 @@ ENTRYPOINT []  ->run command automatically after container is started
 CMD [] =>run command 
 EXPOSE port =>to expose file
 WORKDIR DIRECTRY  ->Switch to directry in container all the work will be in this directry
-
 COPY . .      ->copy all the file of location . to the container . except the file and folder of .dockerignore
+
+
+
+
+
+
+
+The COPY command in Docker is used to copy files and directories from your local file system into a Docker image.
+
+Copy all files and folders from the current directory to the destination in the container:
+COPY . /path/to/destination
+
+Copy a specific file from the current directory to the destination in the container:
+COPY ./filename.extension /path/to/destination
+
+Copy an entire folder from the current directory to the destination in the container:
+COPY ./foldername /path/to/destination
+
+Copy only the contents of a folder (not the folder itself) from the current directory to the destination in the container:
+Dockerfile
+Copy code
+COPY ./foldername/ /path/to/destination
+
+
+
+
+
+
+
 
 MAKE file .dockerignore
 ->inside that file
+->Exclude files and directories from Docker build context to optimize image size and build speed.
 nodemodules/
+
+
 
 
 Building the docker file
 docker build -t IMAGENAME DOCKERFILELOCATION
 
+
+
+
+
 ->docker file and composer file should be in root directry of my projects for example in django in manage.py directry
+
+
+
 
 PUBLISHING THE DOCKER IMAGE IN DOCKER
 ->make docker image of name username/imagename
