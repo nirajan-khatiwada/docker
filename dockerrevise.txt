@@ -5,6 +5,15 @@ To make container from image and run in interative mode(-it)
 ->docker run -it image
 ->the terminal of the container will we opened after building the container
 
+To make container with name 
+->docker run --name name image
+
+
+
+
+
+
+
 Port mapping
 ->docker run -p computerport:dockerport image
 ->to map computer port with docker port.The incomming request at the computerport will redirect to docker container port
