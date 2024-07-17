@@ -65,6 +65,7 @@ RUN CONMMAND         ->run command on this command
 COPY SOURCE DESTINATION ->conpy file to container
 ENTRYPOINT []  ->run command automatically after container is started
 CMD [] =>run command 
+ENV key=value
 EXPOSE port =>to expose file
 WORKDIR DIRECTRY  ->Switch to directry in container all the work will be in this directry
 COPY . .      ->copy all the file of location . to the container . except the file and folder of .dockerignore
