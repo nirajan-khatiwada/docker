@@ -271,3 +271,11 @@ eg:docker run -it -v /home/nirajan/Downloads/backup:/home/app ubuntu
 2)to delete container only not its data
 3)to make a new container with same data
 
+
+
+=>networking in docker
+
+
+
+extra:
+Remember, while one Docker container can host multiple services like MySQL, Code Server, and Redis, it's difficult to install and manage them this way. Each service usually has its own Docker image. To make things easier, we use Docker Compose. Docker Compose lets us define and run multiple containers for different services using a single configuration file. This way, we can use prebuilt images from Docker Hub for each service.
