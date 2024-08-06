@@ -169,6 +169,8 @@ Example: In the django-app service:
 PostgreSQL Host: POSTGRES_HOST=postgres — The Django app connects to the PostgreSQL service using the hostname postgres, which matches the name of the PostgreSQL service defined in Docker Compose.
 Redis Host: REDIS_URL=redis://redis:6379/0 — The Django app connects to the Redis service using the hostname redis, which matches the name of the Redis service defined in Docker Compose.
 
+NOTE: In Docker, services within a Docker Compose setup are typically connected to the same network by default. This allows containers to communicate with each other using service names as hostnames.
+
 
 
 
