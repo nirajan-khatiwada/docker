@@ -1,0 +1,5 @@
+Network none
+In all the network types, the container has access to the internet and can access things hosted on
+the internet like google.com, facebook.com. To turn off the internet inside a Docker container, use
+the network none option. Its command is:
+ docker run --network none imagename
