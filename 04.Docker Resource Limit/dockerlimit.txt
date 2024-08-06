@@ -15,6 +15,7 @@ The example above shows the command for running an image container with access t
 
 
 
+
 2. Setting Memory Limits:
 Option: --memory or -m
 Usage: Sets the maximum amount of memory the container can use.
@@ -22,7 +23,8 @@ Example:
 docker run --memory="500m" my-image
 This command limits the container to use up to 500 megabytes of RAM. If the container exceeds this limit, it may be throttled or terminated.
 
-
+Note:
+Most of these options take a positive integer, followed by a suffix of b , k , m , g , to indicate bytes, kilobytes, megabytes, or gigabytes. The maximum amount of memory the container can use. If you set this option, the minimum allowed value is 6m (6 megabytes).
 
 
 
